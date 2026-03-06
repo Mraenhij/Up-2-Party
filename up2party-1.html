@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
+        <link href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" rel="stylesheet" />
+        <title>Up 2 Party</title>
+    </head>
+    <body style="background-color: black;">
+        <div style="width: 100%; height: 60px; background-color: rgb(41, 41, 41);">
+            <div onclick="">
+                <img src="logo oversize.png" style="height: 40px; width: 40px; margin: 10px;">
+            </div>
+        </div>
+        <div id="map" style="width: 100%; height: 500px; padding-top: 10px;"></div>
+        <script>
+            const map = new maplibregl.Map({
+                style: 'https://tiles.openfreemap.org/styles/positron',
+                center: [19.0703, 47.4696],
+                zoom: 9.5,
+                container: 'map',
+            });
+
+            function addMarker(lng, lat, color, description, onClickFunction) {
+                const markerElement = document.createElement('div');
+                markerElement.style.width = '20px';
+                markerElement.style.height = '20px';
+                markerElement.style.backgroundColor = color;
+                markerElement.style.borderRadius = '50%';
+                markerElement.style.border = '2px solid white';
+
+                const popupContent = `
+                    <div style="font-family: Arial, sans-serif; font-size: 14px;">
+                        <p>${description}</p>
+                        <button onclick="${onClickFunction}">Click Me</button>
+                    </div>
+                `;
+                const popup = new maplibregl.Popup({ offset: 25 }).setHTML(popupContent);
+
+                new maplibregl.Marker({ element: markerElement })
+                    .setLngLat([lng, lat])
+                    .setPopup(popup)
+                    .addTo(map);
+            }
+
+            // Add markers with descriptions
+            addMarker(19.05416, 47.49868, 'rgba(232, 52, 182, 1)', 'Akvárium', "location.href='up2party-akvarium.html'");
+            addMarker(19.0633, 47.4779, 'rgba(232, 52, 182, 1)', 'A38.', "location.href='up2party-a38.html'");
+            addMarker(19.0703, 47.4696, 'rgba(232, 52, 182, 1)', 'Budapestpark', "location.href='up2party-bpark.html'");
+            addMarker(19.0486, 47.4982, 'rgba(232, 52, 182, 1)', 'Ötkert', "location.href='up2party-5kert.html'");
+        </script>
+    </body>
+</html>

@@ -32,7 +32,7 @@
                 container: 'map',
             });
 
-            function addMarker(lng, lat, color, description, onClickFunction) {
+            function addMarker(lng, lat, color, description) {
                 const markerElement = document.createElement('div');
                 markerElement.style.width = '20px';
                 markerElement.style.height = '20px';
@@ -43,7 +43,7 @@
                 const popupContent = `
                     <div style="background-color: black; border-radius: 20px; border: 10px solid pink; padding: 20px; font-family: Arial, sans-serif; font-size: 28px; color: white;">
                         <p style="font-size: 28px; font-family: Arial, sans-serif;">${description}</p>
-                        <button onclick="${onClickFunction}" style="background-color: pink; color: black; border: none; padding: 10px 20px; border-radius: 10px;">...</button>
+                        <button onclick="location.href='up2party-programs.html'" style="background-color: pink; color: black; border: none; padding: 10px 20px; border-radius: 10px;">...</button>
                     </div>
                 `;
                 const popup = new maplibregl.Popup({ offset: 25 }).setHTML(popupContent);
@@ -62,6 +62,7 @@
         </script>
     </body>
 </html>
+
 
 
 

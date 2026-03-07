@@ -3,18 +3,30 @@
     <head>
         <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
         <link href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" rel="stylesheet" />
+        <style>
+            .maplibregl-popup {
+                background: transparent;
+                border: none;
+                box-shadow: none;
+            }
+            .maplibregl-popup-content {
+                background: transparent;
+                border: none;
+                padding: 0;
+            }
+        </style>
         <title>Up 2 Party</title>
     </head>
     <body style="background-color: black;">
         <div style="width: 100%; height: 60px; background-color: rgb(41, 41, 41);">
-            <div onclick="">
-                <img src="logo oversize.png" style="height: 40px; width: 40px; margin: 10px;">
+            <div onclick="location.href='up2party-menu.html'">
+                <img src="menu-burger.png" style="height: 40px; width: 40px; margin: 10px;">
             </div>
         </div>
         <div id="map" style="width: 100%; height: 500px; padding-top: 10px;"></div>
         <script>
             const map = new maplibregl.Map({
-                style: 'https://tiles.openfreemap.org/styles/positron',
+                style: 'up2party.json',
                 center: [19.0703, 47.4696],
                 zoom: 9.5,
                 container: 'map',
@@ -29,9 +41,9 @@
                 markerElement.style.border = '2px solid white';
 
                 const popupContent = `
-                    <div style="font-family: Arial, sans-serif; font-size: 14px;">
+                    <div style="background-color: black; border-radius: 10px; border: 5px solid pink; padding: 10px; font-family: Arial, sans-serif; font-size: 14px; color: white;">
                         <p>${description}</p>
-                        <button onclick="${onClickFunction}">Click Me</button>
+                        <button onclick="${onClickFunction}" style="background-color: pink; color: black; border: none; padding: 5px 10px; border-radius: 5px;">Érdekel...</button>
                     </div>
                 `;
                 const popup = new maplibregl.Popup({ offset: 25 }).setHTML(popupContent);
